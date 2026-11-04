@@ -5,9 +5,17 @@ __pycache__/
 *.sqlite3
 db.sqlite3
 
+# Virtual environments
+myenv/
+venv/
+env/
+.venv/
+.env/
+
 # Django media & staticfiles
 media/
 staticfiles/
+static/
 
 # Node / Next.js
 node_modules/
@@ -29,4 +37,13 @@ next-env.d.ts
 .DS_Store
 Thumbs.db
 *.log
+
+# Python egg / dist
+*.egg-info/
+dist/
+*.egg
+
+# Misc
+*.pyc
+*.pyo
 

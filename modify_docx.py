@@ -2,14 +2,20 @@ from docx import Document
 
 doc = Document("CareerBridge_SRS_Report.docx")
 
-# Print all paragraphs to find "Submitted By" and "yash kisan Patil"
-for i, para in enumerate(doc.paragraphs):
-    if "Submitted" in para.text or "yash" in para.text.lower() or "patil" in para.text.lower():
-        print(f"Para {i}: {para.text}")
+# Change paragraph 13: "Yash Kisan Patil" -> "Gourav Dash"
+doc.paragraphs[13].text = "Gourav Dash"
 
-# Also check tables
-for i, table in enumerate(doc.tables):
-    for row_idx, row in enumerate(table.rows):
-        for cell_idx, cell in enumerate(row.cells):
-            if "Submitted" in cell.text or "yash" in cell.text.lower() or "patil" in cell.text.lower():
-                print(f"Table {i}, Row {row_idx}, Cell {cell_idx}: {cell.text}")
+# Change table 0, row 1, cell 0: "Yash Kisan Patil" -> "Gourav Dash"
+doc.tables[0].rows[1].cells[0].text = "Gourav Dash"
+
+# Add registration number after the name in the table
+# Let's check the table structure first
+table = doc.tables[0]
+print("Table rows:")
+for i, row in enumerate(table.rows):
+    for j, cell in enumerate(row.cells):
+        print(f"  Row {i}, Cell {j}: '{cell.text}'")
+
+# Save the modified document
+doc.save("CareerBridge_SRS_Report_modified.docx")
+print("Document saved as CareerBridge_SRS_Report_modified.docx")
